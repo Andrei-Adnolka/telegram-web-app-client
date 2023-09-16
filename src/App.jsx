@@ -17,7 +17,7 @@ const App = () => {
     <div className="App">
       <Routes>
         <Route path="registration" element={<RegistrationUI />} />
-        <Route path="my_order" element={<MyOrdersUI lang={lang} />} />
+        <Route path="my_orders" element={<MyOrdersUI lang={lang} />} />
       </Routes>
     </div>
   );
