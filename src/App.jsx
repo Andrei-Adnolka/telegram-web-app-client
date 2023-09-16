@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
+
 import { useTelegram } from "./hooks";
 import { RegistrationUI, MyOrdersUI } from "./components";
 
@@ -16,7 +17,7 @@ const App = () => {
   return (
     <div className="App">
       <Routes>
-        <Route path="registration" element={<RegistrationUI />} />
+        <Route path="registration/:masterId?" element={<RegistrationUI />} />
         <Route path="my_orders" element={<MyOrdersUI lang={lang} />} />
       </Routes>
     </div>

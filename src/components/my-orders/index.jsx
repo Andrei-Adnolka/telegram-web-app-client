@@ -7,8 +7,19 @@ const l10n = {
 const MOCK_CONFIG = [
   {
     id: "1",
+    masterId: "22",
     date: { label: "Дата", value: "21 августа" },
-    time: { label: "Время", value: "14:00" },
+    time: { label: "Время", value: "14:00-15:00" },
+    master: { label: "Мастер", value: "Леша" },
+    service: { label: "Услуга", value: "Стрижка + борода" },
+    address: { label: "Адрес", value: "Минск" },
+    price: { label: "Цена", value: "40 BYN" },
+  },
+  {
+    id: "2",
+    masterId: "22",
+    date: { label: "Дата", value: "21 августа" },
+    time: { label: "Время", value: "14:00-15:00" },
     master: { label: "Мастер", value: "Леша" },
     service: { label: "Услуга", value: "Стрижка + борода" },
     address: { label: "Адрес", value: "Минск" },
