@@ -6,7 +6,7 @@ import { RegistrationUI, MyOrdersUI } from "./components";
 import "./App.css";
 
 const App = () => {
-  const { telegram, onClose, user } = useTelegram();
+  const { telegram } = useTelegram();
   const lang = "ru";
 
   useEffect(() => {
