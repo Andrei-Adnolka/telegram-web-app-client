@@ -1,0 +1,12 @@
+.my_orders {
+}
+
+.my_orders__title {
+  font-weight: 700;
+}
+
+.my_orders__list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+}
