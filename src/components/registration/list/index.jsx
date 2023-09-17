@@ -6,6 +6,7 @@ const MOCK_MASTERS = [
   {
     id: "222",
     name: "Леша",
+    specialty: "Барбер",
     place: "Октябрьская 21, барбершоп MLF_HUNTER",
     phone: "+375441111111",
     servicesList: [
@@ -16,6 +17,29 @@ const MOCK_MASTERS = [
   {
     id: "333",
     name: "Петя",
+    specialty: "Барбер",
+    place: "Октябрьская 21, барбершоп MLF_HUNTER",
+    phone: "+375(44)1111111",
+    servicesList: [
+      { id: 1, label: "Срижка" },
+      { id: 2, label: "Срижка + борода" },
+    ],
+  },
+  {
+    id: "444",
+    name: "Иван",
+    specialty: "Барбер",
+    place: "Октябрьская 21, барбершоп MLF_HUNTER",
+    phone: "+375(44)1111111",
+    servicesList: [
+      { id: 1, label: "Срижка" },
+      { id: 2, label: "Срижка + борода" },
+    ],
+  },
+  {
+    id: "555",
+    name: "Степан",
+    specialty: "Барбер",
     place: "Октябрьская 21, барбершоп MLF_HUNTER",
     phone: "+375(44)1111111",
     servicesList: [
@@ -28,10 +52,9 @@ const MOCK_MASTERS = [
 const MasterListUI = ({ setMaster }) => {
   return (
     <div className="masters_wrapper">
-      <span>Выберите мастера</span>
       <div className="masters_list">
         {MOCK_MASTERS.map((master) => {
-          const { id, name, place, phone } = master;
+          const { id, name, specialty, place, phone } = master;
           const onSetData = () => {
             setMaster(master);
           };
@@ -46,12 +69,12 @@ const MasterListUI = ({ setMaster }) => {
                 <img src="/user-avatar.jpg" alt="avatar" />
                 <div>
                   <span>{name}</span>
-                  <span>{place}</span>
+                  <span>{specialty}</span>
                 </div>
               </div>
-              <a className="master__phone" href={`tel:${phone}`}>
+              {/* <a className="master__phone" href={`tel:${phone}`}>
                 {phone}
-              </a>
+              </a> */}
               <div className="master__button">Записаться</div>
             </Link>
           );

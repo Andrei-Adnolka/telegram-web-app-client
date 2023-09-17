@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 
+import HeaderUI from "../header";
+
 import MastersList from "./list";
 
 import "./style.scss";
@@ -32,8 +34,19 @@ const RegistrationUI = () => {
   const [master, setMaster] = useState(null);
   // const [date, setDate] = useState(0);
   // const [service, seetService] = useState("");
-  console.log("master", master);
-  return <div>{master ? null : <MastersList setMaster={setMaster} />}</div>;
+  const { masterId } = useParams();
+  const isMasterPage = !!masterId;
+
+  return (
+    <div>
+      <HeaderUI
+        title={isMasterPage ? "Услуга" : "Выберите мастера"}
+        isGoBackVisible={isMasterPage}
+        isGoForwardVisible={!isMasterPage && !!master}
+      />
+      {isMasterPage ? null : <MastersList setMaster={setMaster} />}
+    </div>
+  );
 };
 
 export default RegistrationUI;
