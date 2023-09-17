@@ -7,7 +7,7 @@ const MOCK_MASTERS = [
     id: "222",
     name: "Леша",
     specialty: "Барбер",
-    place: "Октябрьская 21, барбершоп MLF_HUNTER",
+    place: "барбершоп 'Гараж'",
     phone: "+375441111111",
     servicesList: [
       { id: 1, label: "Срижка" },
@@ -18,7 +18,7 @@ const MOCK_MASTERS = [
     id: "333",
     name: "Петя",
     specialty: "Барбер",
-    place: "Октябрьская 21, барбершоп MLF_HUNTER",
+    place: "барбершоп 'Гараж'",
     phone: "+375(44)1111111",
     servicesList: [
       { id: 1, label: "Срижка" },
@@ -29,7 +29,7 @@ const MOCK_MASTERS = [
     id: "444",
     name: "Иван",
     specialty: "Барбер",
-    place: "Октябрьская 21, барбершоп MLF_HUNTER",
+    place: "барбершоп 'Гараж'",
     phone: "+375(44)1111111",
     servicesList: [
       { id: 1, label: "Срижка" },
@@ -40,7 +40,7 @@ const MOCK_MASTERS = [
     id: "555",
     name: "Степан",
     specialty: "Барбер",
-    place: "Октябрьская 21, барбершоп MLF_HUNTER",
+    place: "барбершоп 'Гараж'",
     phone: "+375(44)1111111",
     servicesList: [
       { id: 1, label: "Срижка" },
@@ -75,6 +75,7 @@ const MasterListUI = ({ setMaster }) => {
               {/* <a className="master__phone" href={`tel:${phone}`}>
                 {phone}
               </a> */}
+              <span className="master__place">{place}</span>
               <div className="master__button">Записаться</div>
             </Link>
           );
