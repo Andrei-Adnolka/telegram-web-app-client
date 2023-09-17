@@ -1,0 +1,52 @@
+.masters_wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 8px;
+  background-color: black;
+  .masters_list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 8px;
+    .master {
+      background-color: white;
+      color: var(--tg-theme-text-color);
+      border-radius: 8px;
+      padding: 8px;
+
+      .master__header {
+        display: flex;
+
+        & > img {
+          width: 34px;
+          height: 34px;
+          margin-right: 8px;
+        }
+        & > div {
+          display: flex;
+          flex-direction: column;
+          font-size: 14px;
+          line-height: 14px;
+          & > span:first-of-type {
+            font-weight: 700;
+            margin-bottom: 2px;
+          }
+        }
+      }
+      .master__phone {
+        font-size: 14px;
+        line-height: 14px;
+        font-weight: 500;
+      }
+      .master__button {
+        text-align: right;
+        font-weight: 700;
+        border: 1px solid var(--tg-theme-text-color);
+        padding: 4px;
+        border-radius: 4px;
+        background-color: var(--tg-theme-bg-color);
+      }
+    }
+  }
+}

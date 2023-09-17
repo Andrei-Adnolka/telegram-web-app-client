@@ -1,11 +1,16 @@
+import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 
-import "./style.css";
+import MastersList from "./list";
+
+import "./style.scss";
 
 const MOCK_MASTERS = [
   {
     id: "222",
     name: "Леша",
+    place: "Октябрьская 21, барбершоп MLF_HUNTER",
+    number: "+375441111111",
     servicesList: [
       { id: 1, label: "Срижка" },
       { id: 2, label: "Срижка + борода" },
@@ -14,6 +19,8 @@ const MOCK_MASTERS = [
   {
     id: "333",
     name: "Петя",
+    place: "Октябрьская 21, барбершоп MLF_HUNTER",
+    number: "+375441111111",
     servicesList: [
       { id: 1, label: "Срижка" },
       { id: 2, label: "Срижка + борода" },
@@ -22,29 +29,11 @@ const MOCK_MASTERS = [
 ];
 
 const RegistrationUI = () => {
-  // const [master, setMaster] = useState();
+  const [master, setMaster] = useState(null);
   // const [date, setDate] = useState(0);
   // const [service, seetService] = useState("");
-
-  const { masterId } = useParams();
-
-  return (
-    <div>
-      {masterId ? null : (
-        <>
-          <span>Выберите мастера</span>
-          {MOCK_MASTERS.map((master) => {
-            const { id, name } = master;
-            return (
-              <Link key={id} to={`/registration/${id}`}>
-                {name}
-              </Link>
-            );
-          })}
-        </>
-      )}
-    </div>
-  );
+  console.log("master", master);
+  return <div>{master ? null : <MastersList setMaster={setMaster} />}</div>;
 };
 
 export default RegistrationUI;
