@@ -10,8 +10,13 @@ const MOCK_MASTERS = [
     place: "барбершоп 'Гараж'",
     phone: "+375441111111",
     servicesList: [
-      { id: 1, label: "Срижка" },
-      { id: 2, label: "Срижка + борода" },
+      { id: 1, label: "Срижка", price: "45 BYN", time: "1 ч" },
+      {
+        id: 2,
+        label: "Срижка + борода + окрашивание",
+        price: "55 BYN",
+        time: "1 ч 30 мин",
+      },
     ],
   },
   {
@@ -21,8 +26,13 @@ const MOCK_MASTERS = [
     place: "барбершоп 'Гараж'",
     phone: "+375(44)1111111",
     servicesList: [
-      { id: 1, label: "Срижка" },
-      { id: 2, label: "Срижка + борода" },
+      { id: 1, label: "Срижка", price: "45 BYN", time: "1 ч" },
+      {
+        id: 2,
+        label: "Срижка + борода + окрашивание",
+        price: "55 BYN",
+        time: "1 ч 30 мин",
+      },
     ],
   },
   {
@@ -32,8 +42,13 @@ const MOCK_MASTERS = [
     place: "барбершоп 'Гараж'",
     phone: "+375(44)1111111",
     servicesList: [
-      { id: 1, label: "Срижка" },
-      { id: 2, label: "Срижка + борода" },
+      { id: 1, label: "Срижка", price: "45 BYN", time: "1 ч" },
+      {
+        id: 2,
+        label: "Срижка + борода + окрашивание",
+        price: "55 BYN",
+        time: "1 ч 30 мин",
+      },
     ],
   },
   {
@@ -43,8 +58,13 @@ const MOCK_MASTERS = [
     place: "барбершоп 'Гараж'",
     phone: "+375(44)1111111",
     servicesList: [
-      { id: 1, label: "Срижка" },
-      { id: 2, label: "Срижка + борода" },
+      { id: 1, label: "Срижка", price: "45 BYN", time: "1 ч" },
+      {
+        id: 2,
+        label: "Срижка + борода + окрашивание",
+        price: "55 BYN",
+        time: "1 ч 30 мин",
+      },
     ],
   },
 ];

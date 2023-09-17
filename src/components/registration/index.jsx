@@ -4,31 +4,9 @@ import { useParams, Link } from "react-router-dom";
 import HeaderUI from "../header";
 
 import MastersList from "./list";
+import Master from "./master";
 
 import "./style.scss";
-
-const MOCK_MASTERS = [
-  {
-    id: "222",
-    name: "Леша",
-    place: "Октябрьская 21, барбершоп MLF_HUNTER",
-    number: "+375441111111",
-    servicesList: [
-      { id: 1, label: "Срижка" },
-      { id: 2, label: "Срижка + борода" },
-    ],
-  },
-  {
-    id: "333",
-    name: "Петя",
-    place: "Октябрьская 21, барбершоп MLF_HUNTER",
-    number: "+375441111111",
-    servicesList: [
-      { id: 1, label: "Срижка" },
-      { id: 2, label: "Срижка + борода" },
-    ],
-  },
-];
 
 const RegistrationUI = () => {
   const [master, setMaster] = useState(null);
@@ -40,11 +18,15 @@ const RegistrationUI = () => {
   return (
     <div>
       <HeaderUI
-        title={isMasterPage ? "Услуга" : "Выберите мастера"}
+        title={isMasterPage ? "Создать запись" : "Выберите мастера"}
         isGoBackVisible={isMasterPage}
         isGoForwardVisible={!isMasterPage && !!master}
       />
-      {isMasterPage ? null : <MastersList setMaster={setMaster} />}
+      {isMasterPage && master ? (
+        <Master {...master} />
+      ) : (
+        <MastersList setMaster={setMaster} />
+      )}
     </div>
   );
 };

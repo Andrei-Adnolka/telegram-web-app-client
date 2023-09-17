@@ -1,3 +1,32 @@
-.masters {
+.master_wrapper {
   display: flex;
+  flex-direction: column;
+  padding: 8px;
+  > * {
+    margin-bottom: 4px;
+  }
+  .master_services {
+    display: flex;
+    flex-direction: column;
+
+    &__title {
+      font-weight: 700;
+    }
+    &__list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      > div {
+        background-color: var(--tg-theme-text-color);
+        color: var(--tg-theme-bg-color);
+        border-radius: 8px;
+        padding: 8px;
+        .price_time {
+          margin-top: 4px;
+          font-size: 14px;
+          line-height: 14px;
+        }
+      }
+    }
+  }
 }
