@@ -1,7 +1,12 @@
+@mixin text {
+  font-size: 14px;
+  line-height: 14px;
+}
 .master_wrapper {
   display: flex;
   flex-direction: column;
   padding: 8px;
+  @include text;
   > * {
     margin-bottom: 4px;
   }
@@ -11,20 +16,19 @@
 
     &__title {
       font-weight: 700;
+      margin-bottom: 4px;
     }
     &__list {
       display: flex;
       flex-direction: column;
       gap: 8px;
       > div {
-        background-color: var(--tg-theme-text-color);
+        background-color: aliceblue;
         color: var(--tg-theme-bg-color);
         border-radius: 8px;
         padding: 8px;
         .price_time {
           margin-top: 4px;
-          font-size: 14px;
-          line-height: 14px;
         }
       }
     }
