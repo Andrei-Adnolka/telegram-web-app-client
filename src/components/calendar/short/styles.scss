@@ -1,0 +1,26 @@
+@import '../../../styles/common.scss';
+
+.short_calendar_day {
+  @include blockUI;
+  min-width: 56px;
+  min-height: 46px;
+  width: 100%;
+  height: 100%;
+  &__active {
+    color: #FFF;
+    background-color: rgb(71, 89, 253);
+    border-radius: 8px;
+    &:hover {
+      background-color: rgb(71, 89, 253);
+    }
+  }
+  .day {
+    display: flex;
+    white-space: nowrap;
+    font-size: 14px;
+  }
+  .month {
+    font-size: 12px;
+    text-align: center;
+  }
+}

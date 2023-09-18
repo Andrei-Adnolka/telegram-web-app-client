@@ -1,8 +1,4 @@
-@mixin text {
-  font-size: 16px;
-  line-height: 16px;
-  color: var(--tg-theme-bg-color);
-}
+@import '../../../styles/common.scss';
 
 .masters_wrapper {
   display: flex;
@@ -15,16 +11,14 @@
     flex-wrap: wrap;
     gap: 8px;
     margin-top: 8px;
-    color: var(--tg-theme-bg-color);
 
     .master {
       display: flex;
       flex-direction: column;
       align-items: center;
       width: calc(50% - 4px);
-      background-color: aliceblue;
-      border-radius: 8px;
-      padding: 8px;
+      @include blockUI;
+      color: var(--tg-theme-bg-color);
 
       .master__header {
         display: flex;
@@ -41,6 +35,7 @@
           display: flex;
           flex-direction: column;
           @include text;
+          color: var(--tg-theme-bg-color);
 
           & > span:first-of-type {
             font-weight: 700;
@@ -50,6 +45,7 @@
       }
       .master__place {
         @include text;
+        color: var(--tg-theme-bg-color);
         margin-bottom: 16px;
       }
 

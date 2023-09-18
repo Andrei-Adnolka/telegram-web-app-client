@@ -1,0 +1,132 @@
+@import '../../styles/common.scss';
+
+.title {
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.rlc-calendar {
+  width: 266px;
+  color: #565656;
+  border: 3px solid transparent;
+  box-sizing: content-box;
+  border-radius: 8px;
+  padding: 8px;
+  height: 0;
+  overflow: hidden;
+  transition: all .3s ease-out;
+
+  &--open {
+    height: 290px;
+    border: 3px solid aliceblue;
+  }
+}
+
+.rlc-days {
+  font-size: 12px;
+}
+
+.rlc-day-label,
+.rlc-day {
+  display: inline-flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  margin: 4px;
+  text-align: center;
+  box-sizing: border-box;
+  border-radius: 8px;
+  transition: background-color .3s ease;
+  font-size: 12px;
+}
+
+.rlc-day {
+  cursor: pointer;
+  user-select: none;
+  &:hover {
+    background-color: aliceblue;
+  }
+  &-active {
+    color: #FFF;
+    background-color: rgb(71, 89, 253);
+    border-radius: 8px;
+    &:hover {
+      background-color: rgb(71, 89, 253);
+    }
+  }
+  &-disabled {
+    pointer-events: none;
+    background: none;
+    color: #d2d2d2;
+    cursor: not-allowed;
+  }
+}
+
+.rlc-day-out-of-month {
+  color: #d2d2d2;
+}
+
+.rlc-month-and-year-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 3px solid aliceblue;
+  padding: 10px 0px;
+  font-weight: 700;
+}
+
+.rlc-month-and-year {
+  flex-grow: 2;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.rlc-navigation-button-wrapper {
+  display: flex;
+  justify-content: space-around;
+  flex-grow: 1;
+  user-select: none;
+}
+
+.rlc-navigation-button {
+  cursor: pointer;
+  &-disabled {
+    color: #d2d2d2;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+.rlc-day-marked::after {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: red;
+  margin-top: 11.5px;
+  z-index: 1;
+  position: absolute;
+}
+
+.rlc-day-today.rlc-day-marked::after {
+  background-color: white;
+}
+
+.short_calendar {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  margin-bottom: 16px;
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 56px;
+    min-height: 48px;
+    width: 100%;
+    height: 100%;
+    @include blockUI;
+  }
+}

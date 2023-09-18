@@ -1,7 +1,5 @@
-@mixin text {
-  font-size: 16px;
-  line-height: 16px;
-}
+@import '../../../styles/common.scss';
+
 .master_wrapper {
   display: flex;
   flex-direction: column;
@@ -16,9 +14,16 @@
   > * {
     margin-bottom: 4px;
   }
+  .master_service {
+    margin-bottom: 16px;
+    .service:hover {
+      background-color: aliceblue;
+    }
+  }
   .master_services {
     display: flex;
     flex-direction: column;
+    margin-bottom: 16px;
 
     &__title {
       font-weight: 700;
@@ -28,15 +33,15 @@
       display: flex;
       flex-direction: column;
       gap: 8px;
-      > div {
-        background-color: aliceblue;
-        color: var(--tg-theme-bg-color);
-        border-radius: 8px;
-        padding: 8px;
-        .price_time {
-          margin-top: 4px;
-        }
-      }
     }
+  }
+}
+
+.service {
+  @include text;
+  @include blockUI;
+  color: var(--tg-theme-bg-color);
+  .price_time {
+    margin-top: 4px;
   }
 }

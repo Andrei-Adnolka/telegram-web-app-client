@@ -2,6 +2,30 @@ import { useParams, Link } from "react-router-dom";
 
 import "./style.scss";
 
+const SERVICES = [
+  { id: 1, label: "Срижка", price: "45 BYN", time: "1 ч" },
+  {
+    id: 2,
+    label: "Срижка + борода + окрашивание",
+    price: "55 BYN",
+    time: "1 ч 30 мин",
+  },
+  { id: 3, label: "Срижка 1", price: "45 BYN", time: "1 ч" },
+  {
+    id: 4,
+    label: "Срижка + борода + окрашивание 1",
+    price: "55 BYN",
+    time: "1 ч 30 мин",
+  },
+  { id: 5, label: "Срижка 2", price: "45 BYN", time: "1 ч" },
+  {
+    id: 6,
+    label: "Срижка + борода + окрашивание 2",
+    price: "55 BYN",
+    time: "1 ч 30 мин",
+  },
+];
+
 const MOCK_MASTERS = [
   {
     id: "222",
@@ -9,15 +33,7 @@ const MOCK_MASTERS = [
     specialty: "Барбер",
     place: "барбершоп 'Гараж'",
     phone: "+375441111111",
-    servicesList: [
-      { id: 1, label: "Срижка", price: "45 BYN", time: "1 ч" },
-      {
-        id: 2,
-        label: "Срижка + борода + окрашивание",
-        price: "55 BYN",
-        time: "1 ч 30 мин",
-      },
-    ],
+    servicesList: [{ id: 1, label: "Срижка", price: "45 BYN", time: "1 ч" }],
   },
   {
     id: "333",
@@ -41,31 +57,7 @@ const MOCK_MASTERS = [
     specialty: "Барбер",
     place: "барбершоп 'Гараж'",
     phone: "+375(44)1111111",
-    servicesList: [
-      { id: 1, label: "Срижка", price: "45 BYN", time: "1 ч" },
-      {
-        id: 2,
-        label: "Срижка + борода + окрашивание",
-        price: "55 BYN",
-        time: "1 ч 30 мин",
-      },
-    ],
-  },
-  {
-    id: "555",
-    name: "Степан",
-    specialty: "Барбер",
-    place: "барбершоп 'Гараж'",
-    phone: "+375(44)1111111",
-    servicesList: [
-      { id: 1, label: "Срижка", price: "45 BYN", time: "1 ч" },
-      {
-        id: 2,
-        label: "Срижка + борода + окрашивание",
-        price: "55 BYN",
-        time: "1 ч 30 мин",
-      },
-    ],
+    servicesList: SERVICES,
   },
 ];
 
