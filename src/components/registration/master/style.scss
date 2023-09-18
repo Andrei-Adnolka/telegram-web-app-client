@@ -1,12 +1,18 @@
 @mixin text {
-  font-size: 14px;
-  line-height: 14px;
+  font-size: 16px;
+  line-height: 16px;
 }
 .master_wrapper {
   display: flex;
   flex-direction: column;
   padding: 8px;
   @include text;
+  .master_info {
+    margin-bottom: 8px;
+    > span {
+      font-weight: 700;
+    }
+  }
   > * {
     margin-bottom: 4px;
   }
@@ -16,7 +22,7 @@
 
     &__title {
       font-weight: 700;
-      margin-bottom: 4px;
+      margin-bottom: 8px;
     }
     &__list {
       display: flex;
