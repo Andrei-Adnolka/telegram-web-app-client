@@ -1,5 +1,8 @@
 @import '../../styles/common.scss';
 
+$disabled-color: #686868;
+$active-color: var(--tg-theme-text-color);
+
 .title {
   font-weight: 700;
   margin-bottom: 8px;
@@ -15,6 +18,7 @@
   height: 0;
   overflow: hidden;
   transition: all .3s ease-out;
+  margin: 0 auto;
 
   &--open {
     height: 290px;
@@ -44,11 +48,13 @@
 .rlc-day {
   cursor: pointer;
   user-select: none;
+  color: var(--tg-theme-text-color);
+
   &:hover {
     background-color: aliceblue;
   }
   &-active {
-    color: #FFF;
+    color: $active-color;
     background-color: rgb(71, 89, 253);
     border-radius: 8px;
     &:hover {
@@ -58,13 +64,13 @@
   &-disabled {
     pointer-events: none;
     background: none;
-    color: #d2d2d2;
+    color: $disabled-color;
     cursor: not-allowed;
   }
 }
 
 .rlc-day-out-of-month {
-  color: #d2d2d2;
+  color: $disabled-color;
 }
 
 .rlc-month-and-year-wrapper {
@@ -92,8 +98,9 @@
 
 .rlc-navigation-button {
   cursor: pointer;
+  color: $active-color;
   &-disabled {
-    color: #d2d2d2;
+    color: $disabled-color;
     cursor: not-allowed;
     pointer-events: none;
   }

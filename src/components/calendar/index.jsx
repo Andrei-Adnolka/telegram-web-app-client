@@ -31,9 +31,9 @@ const CalendarUI = (props) => {
   const onClickDay = useCallback(
     (day) => {
       onClickDate(day);
-      onIsOpenChange();
+      setIsOpen(false);
     },
-    [onClickDate, onIsOpenChange]
+    [onClickDate]
   );
 
   const changeMonth = ({ monthOffset = 0 }) => {
