@@ -5,21 +5,31 @@
   flex-direction: column;
   padding: 8px;
   @include text;
+
   .master_info {
     margin-bottom: 8px;
-    > span {
+
+    >span {
       font-weight: 700;
     }
   }
-  > * {
+
+  >* {
     margin-bottom: 4px;
   }
+
   .master_service {
     margin-bottom: 16px;
-    .service:hover {
-      background-color: aliceblue;
+
+    .service {
+      background-color: $active-block-color;
+      color: var(--tg-theme-text-color);
+      :hover {
+        background-color: $active-block-color;
+      }
     }
   }
+
   .master_services {
     display: flex;
     flex-direction: column;
@@ -29,6 +39,7 @@
       font-weight: 700;
       margin-bottom: 8px;
     }
+
     &__list {
       display: flex;
       flex-direction: column;
@@ -41,6 +52,7 @@
   @include text;
   @include blockUI;
   color: var(--tg-theme-bg-color);
+
   .price_time {
     margin-top: 4px;
   }
