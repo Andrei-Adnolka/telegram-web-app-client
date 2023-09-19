@@ -9,12 +9,12 @@ $active-color: var(--tg-theme-text-color);
 }
 
 .rlc-calendar {
-  width: 266px;
+  width: 296px;
   color: #565656;
   border: 3px solid transparent;
   box-sizing: content-box;
   border-radius: 8px;
-  padding: 8px;
+  padding: 8px 16px;
   height: 0;
   overflow: hidden;
   transition: all .3s ease-out;
@@ -37,7 +37,7 @@ $active-color: var(--tg-theme-text-color);
   align-items: center;
   width: 30px;
   height: 30px;
-  margin: 4px;
+  margin: 6px;
   text-align: center;
   box-sizing: border-box;
   border-radius: 8px;
@@ -54,7 +54,7 @@ $active-color: var(--tg-theme-text-color);
     background-color: aliceblue;
   }
   &-active {
-    color: $active-color;
+    color: white;
     background-color: $active-block-color;
     border-radius: 8px;
     &:hover {
