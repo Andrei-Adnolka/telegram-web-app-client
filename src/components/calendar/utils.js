@@ -41,12 +41,28 @@ export const getDateWithoutTime = (timestamp) => {
 
 export const dateIsOut = (date, start, end) => date < start || date > end;
 
-export const getShortDays = (today, lastMonthDay, month) => {
-  const days = getDays(today, lastMonthDay).slice(0, 7);
-  return days.map((d) => {
-    const dayNumber = parseInt(t.getDay(d), 10);
+const getParsedDays = (day, month) => {
+  const [_, currentMonth] = t.decompose(day);
+  if (month === currentMonth) {
+    const dayNumber = parseInt(t.getDay(day), 10);
     const monthLabel = MONTH[month - 1].slice(0, 4);
-    const dayName = DAYS[t.getWeekDay(d)].slice(0, 2);
-    return { dayName, dayNumber, monthLabel, id: d };
-  });
+    const dayName = DAYS[t.getWeekDay(day)].slice(0, 2);
+    return { dayName, dayNumber, monthLabel, id: day };
+  }
+  return null;
+};
+
+export const getShortDays = (today, lastMonthDay, month, activeDay) => {
+  if (today === lastMonthDay) {
+    return [getParsedDays(today, month)];
+  }
+  if (activeDay === lastMonthDay) {
+    return [getParsedDays(activeDay, month)];
+  }
+
+  let days = getDays(today, lastMonthDay).slice(0, 7);
+  if (!days.includes(activeDay)) {
+    days = getDays(activeDay, lastMonthDay).slice(0, 7);
+  }
+  return days.map((d) => getParsedDays(d, month)).filter((el) => el);
 };

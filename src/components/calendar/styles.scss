@@ -70,7 +70,10 @@ $active-color: var(--tg-theme-text-color);
 }
 
 .rlc-day-out-of-month {
+  pointer-events: none;
+  background: none;
   color: $disabled-color;
+  cursor: not-allowed;
 }
 
 .rlc-month-and-year-wrapper {
@@ -133,9 +136,18 @@ $active-color: var(--tg-theme-text-color);
     align-items: center;
     min-width: 56px;
     min-height: 48px;
+    max-width: 56px;
+    max-height: 48px;
     width: 100%;
     height: 100%;
     @include blockUI;
     color: var(--tg-theme-bg-color);
+    &__active {
+      color: white;
+      background-color: $active-block-color;
+      &:hover {
+        background-color: rgb(71, 89, 253);
+      }
+    }
   }
 }

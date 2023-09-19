@@ -58,15 +58,19 @@ const CalendarUI = (props) => {
   const [_, currentMonth] = t.decompose(today);
 
   const shortDays = useMemo(() => {
-    return getShortDays(today, lastMonthDay, currentMonth);
-  }, [today, currentMonth, lastMonthDay]);
-  console.log("currentMonth", currentMonth);
-  console.log("month", month);
+    return getShortDays(today, lastMonthDay, month, activeDay);
+  }, [activeDay]);
+
   return (
     <div>
       <div className="title">Дата и время</div>
       <div className="short_calendar">
-        <div className="short_calendar__button" onClick={onIsOpenChange}>
+        <div
+          className={cn("short_calendar__button", {
+            ["short_calendar__button__active"]: isOpen,
+          })}
+          onClick={onIsOpenChange}
+        >
           Open
         </div>
         {shortDays.map((d) => {
