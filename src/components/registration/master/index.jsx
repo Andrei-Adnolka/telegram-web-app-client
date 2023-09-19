@@ -38,8 +38,10 @@ const MasterUI = ({ name, servicesList, place, phone }) => {
   const [date, setDate] = useState(today);
   const [service, setService] = useState("");
 
-  console.log("service", service);
-  console.log("date", date);
+  const onRemoved = () => {
+    setService("");
+  };
+
   return (
     <div className="master_wrapper">
       <div className="master_info">
@@ -48,7 +50,9 @@ const MasterUI = ({ name, servicesList, place, phone }) => {
       </div>
       {service ? (
         <div className="master_service">
-          <div className="master_services__title">Услуга</div>
+          <div className="master_services__title">
+            Услуга<span onClick={onRemoved}>Изменить</span>
+          </div>
           <Service service={service} />
         </div>
       ) : (

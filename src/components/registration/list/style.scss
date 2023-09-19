@@ -53,8 +53,8 @@
         display: inline-block;
         padding: 4px 8px;
         border-radius: 6px;
-        background: var(--tg-theme-bg-color);
-        color: var(--tg-theme-text-color);
+        background: $active-block-color;
+        color: white;
       }
     }
   }

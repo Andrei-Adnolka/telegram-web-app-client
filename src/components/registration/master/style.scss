@@ -23,7 +23,7 @@
 
     .service {
       background-color: $active-block-color;
-      color: var(--tg-theme-text-color);
+      color: white;
       :hover {
         background-color: $active-block-color;
       }
@@ -38,6 +38,11 @@
     &__title {
       font-weight: 700;
       margin-bottom: 8px;
+      > span {
+        margin-left: 8px;
+        font-weight: 400;
+        font-size: 12px;
+      }
     }
 
     &__list {
