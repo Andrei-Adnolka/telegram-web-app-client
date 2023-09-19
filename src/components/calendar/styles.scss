@@ -23,6 +23,7 @@ $active-color: var(--tg-theme-text-color);
   &--open {
     height: 290px;
     border: 3px solid aliceblue;
+    margin: 16px 0px;
   }
 }
 
@@ -129,7 +130,6 @@ $active-color: var(--tg-theme-text-color);
   display: flex;
   gap: 8px;
   overflow-x: auto;
-  margin-bottom: 16px;
   &__button {
     display: flex;
     justify-content: center;

@@ -1,6 +1,7 @@
 import { useState, useCallback } from "react";
 
 import CalendarIU from "../../calendar";
+import FormIU from "../../form";
 import { getDateWithoutTime } from "../../calendar/utils";
 
 import "./style.scss";
@@ -37,10 +38,18 @@ const MasterUI = ({ name, servicesList, place, phone }) => {
   const today = getDateWithoutTime(new Date().getTime());
   const [date, setDate] = useState(today);
   const [service, setService] = useState("");
+  const [formData, setFormData] = useState("");
 
   const onRemoved = () => {
     setService("");
   };
+
+  const onSetFormData = useCallback(
+    (id, value) => {
+      setFormData((prev) => ({ ...prev, [id]: value }));
+    },
+    [setFormData]
+  );
 
   return (
     <div className="master_wrapper">
@@ -59,6 +68,7 @@ const MasterUI = ({ name, servicesList, place, phone }) => {
         <ServiceList servicesList={servicesList} setService={setService} />
       )}
       <CalendarIU onClickDate={setDate} activeDay={date} />
+      <FormIU onSetData={onSetFormData} />
     </div>
   );
 };
