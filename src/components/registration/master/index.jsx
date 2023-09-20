@@ -42,7 +42,7 @@ const MasterUI = ({ name, servicesList, place, phone }) => {
   const [service, setService] = useState("");
   const [formData, setFormData] = useState("");
 
-  const { telegram, onToggleButton } = useTelegram();
+  const { telegram } = useTelegram();
 
   useChangeMainButtonName("Записаться");
 
@@ -58,7 +58,7 @@ const MasterUI = ({ name, servicesList, place, phone }) => {
   }, [telegram, onSendData]);
 
   useEffect(() => {
-    if (date && service && formData.name && formData.phone) {
+    if (date && service && formData.first_name && formData.phone) {
       telegram.MainButton.show();
     } else {
       telegram.MainButton.hide();
@@ -78,7 +78,7 @@ const MasterUI = ({ name, servicesList, place, phone }) => {
 
   return (
     <div className="master_wrapper">
-      <div className="master_info" onClick={onToggleButton}>
+      <div className="master_info">
         Мастер: <span>{name}</span>
         <div>{place}</div>
       </div>
