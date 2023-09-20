@@ -62,7 +62,7 @@ const CalendarUI = (props) => {
   }, [activeDay]);
 
   return (
-    <div>
+    <div className="calendar_wrapper">
       <div className="title">Дата и время</div>
       <div className="short_calendar">
         <div

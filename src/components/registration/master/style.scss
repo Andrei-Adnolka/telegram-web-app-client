@@ -6,16 +6,16 @@
   padding: 8px;
   @include text;
 
+  & > div {
+    margin-bottom: 16px;
+  }
+
   .master_info {
     margin-bottom: 8px;
 
     >span {
       font-weight: 700;
     }
-  }
-
-  >* {
-    margin-bottom: 4px;
   }
 
   .master_service {

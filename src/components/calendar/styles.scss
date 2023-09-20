@@ -3,6 +3,10 @@
 $disabled-color: #686868;
 $active-color: var(--tg-theme-text-color);
 
+.calendar_wrapper[class] {
+  margin-bottom: 0px;
+}
+
 .title {
   font-weight: 700;
   margin-bottom: 8px;
@@ -15,6 +19,7 @@ $active-color: var(--tg-theme-text-color);
   box-sizing: content-box;
   border-radius: 8px;
   padding: 8px 16px;
+  margin: 0 auto;
   height: 0;
   overflow: hidden;
   transition: all .3s ease-out;
