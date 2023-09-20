@@ -46,8 +46,6 @@ const MasterUI = ({ name, servicesList, place, phone }) => {
 
   useChangeMainButtonName("Записаться");
 
-  console.log("telegram", telegram.sendData);
-
   const onSendData = useCallback(() => {
     const data = { date, service, formData, queryId };
     fetch("http://localhost:8000/web-data ", {
@@ -57,6 +55,7 @@ const MasterUI = ({ name, servicesList, place, phone }) => {
       },
       body: JSON.stringify(data),
     });
+    telegram.sendData(JSON.stringify(data));
   }, [date, service, formData, queryId]);
 
   useEffect(() => {
