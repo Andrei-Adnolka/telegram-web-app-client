@@ -49,7 +49,8 @@ const MasterUI = ({ name, servicesList, place, phone }) => {
   console.log("telegram", telegram);
 
   const onSendData = useCallback(() => {
-    telegram.sendData(JSON.stringify({ date, service, formData }));
+    const data = { date, service, formData };
+    telegram.sendData(JSON.stringify(data));
   }, [date, service, formData, telegram]);
 
   useEffect(() => {
@@ -85,7 +86,7 @@ const MasterUI = ({ name, servicesList, place, phone }) => {
         <div>{place}</div>
       </div>
       {service ? (
-        <div className="master_service">
+        <div className="master_service" onClick={onSendData}>
           <div className="master_services__title">
             Услуга<span onClick={onRemoved}>Изменить</span>
           </div>
