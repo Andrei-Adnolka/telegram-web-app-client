@@ -50,7 +50,7 @@ const MasterUI = ({ name, servicesList, place, phone }) => {
 
   const onSendData = useCallback(() => {
     telegram.sendData(JSON.stringify({ date, service, formData }));
-  }, [date, service, formData]);
+  }, [date, service, formData, telegram]);
 
   useEffect(() => {
     telegram.onEvent("mainButtonClicked", onSendData);
