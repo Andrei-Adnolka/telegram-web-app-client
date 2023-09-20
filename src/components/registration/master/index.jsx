@@ -55,7 +55,7 @@ const MasterUI = ({ name, servicesList, place, phone }) => {
     return () => {
       telegram.offEvent("mainButtonClicked", onSendData);
     };
-  }, []);
+  }, [telegram, onSendData]);
 
   useEffect(() => {
     if (date && service && formData.name && formData.phone) {
