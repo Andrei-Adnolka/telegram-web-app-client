@@ -42,23 +42,29 @@ const MasterUI = ({ name, servicesList, place, phone }) => {
   const [service, setService] = useState("");
   const [formData, setFormData] = useState("");
 
-  const { telegram } = useTelegram();
+  const { telegram, queryId } = useTelegram();
 
   useChangeMainButtonName("Записаться");
 
-  console.log("telegram", telegram);
+  console.log("telegram", telegram.sendData);
 
   const onSendData = useCallback(() => {
-    const data = { date, service, formData };
-    telegram.sendData(JSON.stringify(data));
-  }, [date, service, formData, telegram]);
+    const data = { date, service, formData, queryId };
+    fetch("http://localhost:8000/web-data ", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+  }, [date, service, formData, queryId]);
 
   useEffect(() => {
     telegram.onEvent("mainButtonClicked", onSendData);
     return () => {
       telegram.offEvent("mainButtonClicked", onSendData);
     };
-  }, [telegram, onSendData]);
+  }, [onSendData]);
 
   useEffect(() => {
     if (date && service && formData.first_name && formData.phone) {
