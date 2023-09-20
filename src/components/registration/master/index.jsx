@@ -42,7 +42,7 @@ const MasterUI = ({ name, servicesList, place, phone }) => {
   const [service, setService] = useState("");
   const [formData, setFormData] = useState("");
 
-  const { telegram } = useTelegram();
+  const { telegram, onToggleButton } = useTelegram();
 
   useChangeMainButtonName("Записаться");
 
@@ -78,7 +78,7 @@ const MasterUI = ({ name, servicesList, place, phone }) => {
 
   return (
     <div className="master_wrapper">
-      <div className="master_info">
+      <div className="master_info" onClick={onToggleButton}>
         Мастер: <span>{name}</span>
         <div>{place}</div>
       </div>
