@@ -1,8 +1,10 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 
 import CalendarIU from "../../calendar";
 import FormIU from "../../form";
 import { getDateWithoutTime } from "../../calendar/utils";
+
+import { useTelegram, useChangeMainButtonName } from "../../../hooks";
 
 import "./style.scss";
 
@@ -39,6 +41,29 @@ const MasterUI = ({ name, servicesList, place, phone }) => {
   const [date, setDate] = useState(today);
   const [service, setService] = useState("");
   const [formData, setFormData] = useState("");
+
+  const { telegram } = useTelegram();
+
+  useChangeMainButtonName("Записаться");
+
+  const onSendData = useCallback(() => {
+    telegram.sendData(JSON.stringify({ date, service, formData }));
+  }, [date, service, formData]);
+
+  useEffect(() => {
+    telegram.onEvent("mainButtonClicked", onSendData);
+    return () => {
+      telegram.offEvent("mainButtonClicked", onSendData);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (date && service && formData.name && formData.phone) {
+      telegram.MainButton.show();
+    } else {
+      telegram.MainButton.hide();
+    }
+  }, [date, service, formData]);
 
   const onRemoved = () => {
     setService("");

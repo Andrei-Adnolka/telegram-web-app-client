@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 const telegram = window.Telegram.WebApp;
 
 export const useTelegram = () => {
@@ -19,4 +21,10 @@ export const useTelegram = () => {
     telegram,
     user: telegram?.initDataUnsafe?.user,
   };
+};
+
+export const useChangeMainButtonName = (text) => {
+  useEffect(() => {
+    telegram?.mainButton?.setParams?.({ text });
+  }, []);
 };
