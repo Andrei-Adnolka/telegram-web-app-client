@@ -25,6 +25,6 @@ export const useTelegram = () => {
 
 export const useChangeMainButtonName = (text) => {
   useEffect(() => {
-    telegram?.mainButton?.setParams?.({ text });
+    telegram?.MainButton?.setParams?.({ text });
   }, []);
 };

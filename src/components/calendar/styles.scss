@@ -14,7 +14,7 @@ $active-color: var(--tg-theme-text-color);
 
 .rlc-calendar {
   width: 296px;
-  color: #565656;
+  color: $default-color;
   border: 3px solid transparent;
   box-sizing: content-box;
   border-radius: 8px;
@@ -150,7 +150,7 @@ $active-color: var(--tg-theme-text-color);
       color: white;
       background-color: $active-block-color;
       &:hover {
-        background-color: rgb(71, 89, 253);
+        background-color: $active-block-color;
       }
     }
   }
