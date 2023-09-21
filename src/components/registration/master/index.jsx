@@ -1,8 +1,9 @@
 import { useState, useCallback, useEffect } from "react";
+import t from "timestamp-utils";
 
 import CalendarIU from "../../calendar";
 import FormIU from "../../form";
-import { getDateWithoutTime } from "../../calendar/utils";
+import { getDateWithoutTime, getDayLabel } from "../../calendar/utils";
 
 import { useTelegram, useChangeMainButtonName } from "../../../hooks";
 
@@ -47,16 +48,25 @@ const MasterUI = ({ name, servicesList, place, phone }) => {
   useChangeMainButtonName("Записаться");
 
   const onSendData = useCallback(() => {
-    const data = { date, service, formData, queryId };
-    fetch("http://localhost:8000/web-data ", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+    const data = {
+      masterName: name,
+      place,
+      date,
+      dayLabel: getDayLabel(date),
+      service,
+      formData,
+      queryId,
+    };
+    // fetch("http://localhost:8000/web-data ", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-type": "application/json",
+    //   },
+    //   body: JSON.stringify(data),
+    // });
+    // // TODO: remove after deploy bot
     telegram.sendData(JSON.stringify(data));
-  }, [date, service, formData, queryId]);
+  }, [date, service, formData, queryId, name]);
 
   useEffect(() => {
     telegram.onEvent("mainButtonClicked", onSendData);

@@ -41,12 +41,22 @@ export const getDateWithoutTime = (timestamp) => {
 
 export const dateIsOut = (date, start, end) => date < start || date > end;
 
+export const getDayName = (day, isShort) => {
+  const dayName = DAYS[t.getWeekDay(day)];
+  return isShort ? dayName.slice(0, 2) : dayName;
+};
+
+export const getDayLabel = (day) => {
+  const [year, currentMonth, dayNumber] = t.decompose(day);
+  const dayName = getDayName(day);
+  return `${dayNumber}-${currentMonth}-${year}, ${dayName}`;
+};
+
 const getParsedDays = (day, month) => {
-  const [_, currentMonth] = t.decompose(day);
+  const [_, currentMonth, dayNumber] = t.decompose(day);
   if (month === currentMonth) {
-    const dayNumber = parseInt(t.getDay(day), 10);
     const monthLabel = MONTH[month - 1].slice(0, 4);
-    const dayName = DAYS[t.getWeekDay(day)].slice(0, 2);
+    const dayName = getDayName(day, true);
     return { dayName, dayNumber, monthLabel, id: day };
   }
   return null;
