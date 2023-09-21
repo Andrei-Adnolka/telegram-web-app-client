@@ -49,16 +49,15 @@ const PhoneInputUI = ({ onSetData }) => {
     onSetData(name, value);
   };
 
-  const onClick = () => {
-    telegram.requestContact((phone) => {
-      onSetData(name, phone);
-      telegram.sendData(JSON.stringify({ phone }));
-    });
-  };
+  // const onClick = () => {
+  //   telegram.requestContact((phone) => {
+  //     onSetData(name, phone);
+  //     telegram.sendData(JSON.stringify({ phone }));
+  //   });
+  // };
 
   return (
     <InputMask
-      onClick={onClick}
       value={value}
       onChange={onChange}
       onBlur={onBlur}
