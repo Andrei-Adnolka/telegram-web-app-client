@@ -33,7 +33,7 @@ const MOCK_MASTERS = [
     specialty: "Барбер",
     place: "барбершоп 'Гараж'",
     phone: "+375441111111",
-    servicesList: [{ id: 1, label: "Срижка", price: "45 BYN", time: "1 ч" }],
+    servicesList: SERVICES,
   },
   {
     id: "333",

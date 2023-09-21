@@ -1,6 +1,8 @@
 import { memo, useState } from "react";
 import InputMask from "react-input-mask";
 
+import { useTelegram } from "../../hooks";
+
 import "./style.scss";
 
 const CONFIG = [
@@ -37,6 +39,7 @@ const InputUI = ({ element, onSetData, extraData = {} }) => {
 const PhoneInputUI = ({ onSetData }) => {
   const [value, setValue] = useState("");
   const name = "phone";
+  const { telegram } = useTelegram();
 
   const onChange = (e) => {
     setValue(e.target.value);
@@ -46,8 +49,16 @@ const PhoneInputUI = ({ onSetData }) => {
     onSetData(name, value);
   };
 
+  const onClick = () => {
+    telegram.requestContact((phone) => {
+      onSetData(name, phone);
+      telegram.sendData(JSON.stringify({ phone }));
+    });
+  };
+
   return (
     <InputMask
+      onClick={onClick}
       value={value}
       onChange={onChange}
       onBlur={onBlur}

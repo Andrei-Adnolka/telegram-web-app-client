@@ -50,6 +50,7 @@ const MasterUI = ({ name, servicesList, place, phone }) => {
   const onSendData = useCallback(() => {
     const data = {
       masterName: name,
+      masterPhone: phone,
       place,
       date,
       dayLabel: getDayLabel(date),
