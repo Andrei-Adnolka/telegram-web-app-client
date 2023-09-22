@@ -56,7 +56,6 @@
 .service {
   @include text;
   @include blockUI;
-  color: var(--tg-theme-bg-color);
 
   .price_time {
     margin-top: 4px;

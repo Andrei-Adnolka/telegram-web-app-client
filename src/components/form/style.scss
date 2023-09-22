@@ -22,7 +22,7 @@
   height: 40px;
   font-size: 16px;
   background-color: white;
-  border: 1px solid var(--tg-theme-text-color);
+  border: $active-block-color;
   color: $default-color;
   &:focus,
   &:active,
