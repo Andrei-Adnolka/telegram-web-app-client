@@ -62,7 +62,9 @@ const getParsedDays = (day, month) => {
   return null;
 };
 
-export const getShortDays = (today, lastMonthDay, month, activeDay) => {
+export const getShortDays = (today, lastMonthDay, activeDay) => {
+  const [year, month, dayNumber] = t.decompose(activeDay);
+
   if (today === lastMonthDay) {
     return [getParsedDays(today, month)];
   }

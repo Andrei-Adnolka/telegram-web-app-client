@@ -28,37 +28,41 @@ const CalendarUI = (props) => {
     setIsOpen((prev) => !prev);
   }, []);
 
-  const onClickDay = useCallback(
-    (day) => {
-      onClickDate(day);
-      setIsOpen(false);
-    },
-    [onClickDate]
-  );
-
   const changeMonth = ({ monthOffset = 0 }) => {
     const timestamp = t.add(firstMonthDay, { months: monthOffset });
     setState(initMonth(timestamp));
   };
+
+  const onClickDay = useCallback(
+    (day) => {
+      onClickDate(day);
+      setState(initMonth(day));
+      setIsOpen(false);
+    },
+    [onClickDate, month]
+  );
+
   const today = getDateWithoutTime(new Date().getTime());
+  const [_, currentMonth] = t.decompose(today);
 
   const getClassNames = (day) => {
     // show worker days
     const isMarked = Array.isArray(markedDays)
       ? markedDays.map(getDateWithoutTime).includes(day)
       : false;
+    const isDayOutOfMonth = dateIsOut(day, firstMonthDay, lastMonthDay);
 
     return cn("rlc-day", `rlc-day-${day}`, {
-      "rlc-day-out-of-month": dateIsOut(day, firstMonthDay, lastMonthDay),
+      "rlc-day-out-of-month": isDayOutOfMonth,
       "rlc-day-marked": isMarked,
       "rlc-day-active": activeDay === day,
-      "rlc-day-disabled": today > day,
+      "rlc-day-disabled":
+        today > day || (month === currentMonth && isDayOutOfMonth),
     });
   };
-  const [_, currentMonth] = t.decompose(today);
 
   const shortDays = useMemo(() => {
-    return getShortDays(today, lastMonthDay, month, activeDay);
+    return getShortDays(today, lastMonthDay, activeDay);
   }, [activeDay]);
 
   return (

@@ -1,6 +1,6 @@
 @import '../../styles/common.scss';
 
-$disabled-color: #686868;
+$disabled-color: #b4b2b2;
 $active-color: var(--tg-theme-text-color);
 
 .calendar_wrapper[class] {
@@ -26,8 +26,9 @@ $active-color: var(--tg-theme-text-color);
 
   &--open {
     height: 290px;
-    border: 3px solid aliceblue;
     margin: 16px auto;
+    background-color:aliceblue;
+    box-shadow: 0 0 4px $active-block-color;
   }
 }
 
@@ -56,7 +57,8 @@ $active-color: var(--tg-theme-text-color);
   color: $default-color;
 
   &:hover {
-    background-color: aliceblue;
+    color: white;
+    background-color: $active-block-color;
   }
   &-active {
     color: white;
@@ -75,18 +77,15 @@ $active-color: var(--tg-theme-text-color);
 }
 
 .rlc-day-out-of-month {
-  pointer-events: none;
-  background: none;
   color: $disabled-color;
-  cursor: not-allowed;
 }
 
 .rlc-month-and-year-wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 3px solid aliceblue;
-  padding: 10px 0px;
+  border-bottom: 2px solid $active-block-color;
+  height: 40px;
   font-weight: 700;
 }
 
@@ -95,19 +94,26 @@ $active-color: var(--tg-theme-text-color);
   text-align: center;
   text-transform: uppercase;
   font-size: 14px;
-  color: var(--tg-theme-text-color);
+  color: $default-color;
 }
 
 .rlc-navigation-button-wrapper {
   display: flex;
+  align-items: center;
   justify-content: space-around;
   flex-grow: 1;
   user-select: none;
+  height: 100%;
 }
 
 .rlc-navigation-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
   cursor: pointer;
-  color: $active-color;
+  color: $active-block-color;
+  height: 100%;
+  width: 100%;
   &-disabled {
     color: $disabled-color;
     cursor: not-allowed;
