@@ -34,6 +34,7 @@ const MOCK_MASTERS = [
     place: "барбершоп 'Гараж'",
     phone: "+375441111111",
     servicesList: SERVICES,
+    photo: "/user-avatar.jpg",
   },
   {
     id: "333",
@@ -50,6 +51,7 @@ const MOCK_MASTERS = [
         time: "1 ч 30 мин",
       },
     ],
+    photo: "/user-avatar.jpg",
   },
   {
     id: "444",
@@ -58,6 +60,7 @@ const MOCK_MASTERS = [
     place: "барбершоп 'Гараж'",
     phone: "+375(44)1111111",
     servicesList: SERVICES,
+    photo: "/user-avatar.jpg",
   },
 ];
 
@@ -66,7 +69,7 @@ const MasterListUI = ({ setMaster }) => {
     <div className="masters_wrapper">
       <div className="masters_list">
         {MOCK_MASTERS.map((master) => {
-          const { id, name, specialty, place, phone } = master;
+          const { id, name, specialty, place, phone, photo } = master;
           const onSetData = () => {
             setMaster(master);
           };
@@ -78,7 +81,7 @@ const MasterListUI = ({ setMaster }) => {
               onClick={onSetData}
             >
               <div className="master__header">
-                <img src="/user-avatar.jpg" alt="avatar" />
+                <img src={photo} alt="avatar" />
                 <div>
                   <span>{name}</span>
                   <span>{specialty}</span>

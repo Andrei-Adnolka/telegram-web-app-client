@@ -10,8 +10,6 @@ import "./style.scss";
 
 const RegistrationUI = () => {
   const [master, setMaster] = useState(null);
-  // const [date, setDate] = useState(0);
-  // const [service, seetService] = useState("");
   const { masterId } = useParams();
   const isMasterPage = !!masterId;
 
