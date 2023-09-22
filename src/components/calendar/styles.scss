@@ -114,6 +114,8 @@ $active-color: var(--tg-theme-text-color);
   color: $active-block-color;
   height: 100%;
   width: 100%;
+  font-size: 20px;
+  font-weight: 700;
   &-disabled {
     color: $disabled-color;
     cursor: not-allowed;
