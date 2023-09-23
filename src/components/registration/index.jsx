@@ -8,22 +8,34 @@ import Master from "./master";
 
 import "./style.scss";
 
-const RegistrationUI = () => {
+const l10n = {
+  ru: {
+    createRegistration: "Создать запись",
+    selectSpecialist: "Выберите мастера",
+  },
+  eng: {
+    createRegistration: "Create registration",
+    selectSpecialist: "Select specialist",
+  },
+};
+
+const RegistrationUI = ({ lang }) => {
   const [master, setMaster] = useState(null);
   const { masterId } = useParams();
   const isMasterPage = !!masterId;
+  const { createRegistration, selectSpecialist } = l10n[lang];
 
   return (
     <div>
       <HeaderUI
-        title={isMasterPage ? "Создать запись" : "Выберите мастера"}
+        title={isMasterPage ? createRegistration : selectSpecialist}
         isGoBackVisible={isMasterPage}
         isGoForwardVisible={!isMasterPage && !!master}
       />
       {isMasterPage && master ? (
-        <Master {...master} />
+        <Master {...master} lang={lang} />
       ) : (
-        <MastersList setMaster={setMaster} />
+        <MastersList setMaster={setMaster} lang={lang} />
       )}
     </div>
   );

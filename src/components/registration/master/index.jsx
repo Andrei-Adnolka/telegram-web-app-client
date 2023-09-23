@@ -10,6 +10,21 @@ import { useTelegram, useChangeMainButtonName } from "../../../hooks";
 
 import "./style.scss";
 
+const l10n = {
+  ru: {
+    selectService: "Выберите услугу",
+    specialist: "Мастер",
+    service: "Услуга",
+    place: "Место",
+  },
+  eng: {
+    selectService: "Select service",
+    specialist: "Specialist",
+    service: "Service",
+    place: "Place",
+  },
+};
+
 const Service = ({ service, setService }) => {
   const { label, id, price, time } = service;
   const onChose = () => {
@@ -27,19 +42,26 @@ const Service = ({ service, setService }) => {
   );
 };
 
-const ServiceList = ({ servicesList, setService }) => (
-  <div className="master_services">
-    <div className="master_services__title">Выберите услугу</div>
-    <div className="master_services__list">
-      {servicesList.map((s) => (
-        <Service service={s} key={s.id} setService={setService} />
-      ))}
+const ServiceList = ({ servicesList, setService, lang }) => {
+  const { selectService } = l10n[lang];
+
+  return (
+    <div className="master_services">
+      <div className="master_services__title">{selectService}</div>
+      <div className="master_services__list">
+        {servicesList.map((s) => (
+          <Service service={s} key={s.id} setService={setService} />
+        ))}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const MasterUI = (props) => {
-  const { name, servicesList, place, phone, workingDays, workingHours } = props;
+  const { name, servicesList, place, phone, workingDays, workingHours, lang } =
+    props;
+  const { specialist, service: s, place: p } = l10n[lang];
+
   const [date, setDate] = useState(workingDays[0]);
   const [time, setTime] = useState(0);
   const [service, setService] = useState("");
@@ -102,18 +124,25 @@ const MasterUI = (props) => {
   return (
     <div className="master_wrapper">
       <div className="master_info">
-        Мастер: <span>{name}</span>
-        <div>{place}</div>
+        {specialist}: <span>{name}</span>
+        <div>
+          {p}: {place}
+        </div>
       </div>
       {service ? (
         <div className="master_service">
           <div className="master_services__title">
-            Услуга<span onClick={onRemoved}>Изменить</span>
+            {s}
+            <img src="/pencil.svg" onClick={onRemoved} />
           </div>
           <Service service={service} />
         </div>
       ) : (
-        <ServiceList servicesList={servicesList} setService={setService} />
+        <ServiceList
+          servicesList={servicesList}
+          setService={setService}
+          lang={lang}
+        />
       )}
       <CalendarIU
         onClickDate={setDate}
