@@ -1,4 +1,4 @@
-import { memo, useCallback, useState, useMemo } from "react";
+import { memo, useCallback, useState, useMemo, useEffect } from "react";
 import t from "timestamp-utils";
 import cn from "classnames";
 
@@ -38,6 +38,11 @@ const CalendarUI = (props) => {
       onClickDate(day);
       setState(initMonth(day));
       setIsOpen(false);
+      setTimeout(() => {
+        document
+          .querySelector(".short_calendar_day__active")
+          ?.scrollIntoView?.({ behavior: "smooth", inline: "center" });
+      }, 0);
     },
     [onClickDate, month]
   );
