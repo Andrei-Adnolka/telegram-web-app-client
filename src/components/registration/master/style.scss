@@ -61,3 +61,18 @@
     margin-top: 4px;
   }
 }
+
+.working_hours {
+  display: flex;
+  gap: 8px;
+  margin-top: -16px;
+
+  > div {
+    @include blockUI;
+    font-size: 14px;
+    &.hour_active {
+      background-color: $active-block-color;
+      color: white;
+    }
+  }
+}

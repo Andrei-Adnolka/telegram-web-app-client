@@ -21,7 +21,7 @@ t.setTimezone(TIMEZONE);
 const CalendarUI = (props) => {
   const [state, setState] = useState(initMonth());
   const [isOpen, setIsOpen] = useState(false);
-  const { onClickDate, activeDay, markedDays = null } = props;
+  const { onClickDate, activeDay, workingDays = null } = props;
   const { month, year, firstDayToDisplay, lastMonthDay, firstMonthDay } = state;
 
   const onIsOpenChange = useCallback(() => {
@@ -51,24 +51,24 @@ const CalendarUI = (props) => {
   const [_, currentMonth] = t.decompose(today);
 
   const getClassNames = (day) => {
-    // show worker days
-    const isMarked = Array.isArray(markedDays)
-      ? markedDays.map(getDateWithoutTime).includes(day)
+    const isWorking = Array.isArray(workingDays)
+      ? workingDays.map(getDateWithoutTime).includes(day)
       : false;
     const isDayOutOfMonth = dateIsOut(day, firstMonthDay, lastMonthDay);
 
     return cn("rlc-day", `rlc-day-${day}`, {
       "rlc-day-out-of-month": isDayOutOfMonth,
-      "rlc-day-marked": isMarked,
       "rlc-day-active": activeDay === day,
       "rlc-day-disabled":
-        today > day || (month === currentMonth && isDayOutOfMonth),
+        today > day ||
+        (month === currentMonth && isDayOutOfMonth) ||
+        !isWorking,
     });
   };
 
   const shortDays = useMemo(() => {
-    return getShortDays(today, lastMonthDay, activeDay);
-  }, [activeDay]);
+    return getShortDays(today, lastMonthDay, activeDay, workingDays);
+  }, [activeDay, workingDays]);
 
   return (
     <div className="calendar_wrapper">

@@ -1,7 +1,6 @@
 @import '../../styles/common.scss';
 
 $disabled-color: #b4b2b2;
-$active-color: var(--tg-theme-text-color);
 
 .calendar_wrapper[class] {
   margin-bottom: 0px;
@@ -27,6 +26,7 @@ $active-color: var(--tg-theme-text-color);
   &--open {
     height: 290px;
     margin: 16px auto;
+    margin-bottom: 32px;
     background-color:aliceblue;
     box-shadow: 0 0 4px $active-block-color;
   }
@@ -49,6 +49,7 @@ $active-color: var(--tg-theme-text-color);
   border-radius: 8px;
   transition: background-color .3s ease;
   font-size: 12px;
+  font-weight: 700;
 }
 
 .rlc-day {
@@ -121,21 +122,6 @@ $active-color: var(--tg-theme-text-color);
     cursor: not-allowed;
     pointer-events: none;
   }
-}
-
-.rlc-day-marked::after {
-  content: "";
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background-color: red;
-  margin-top: 11.5px;
-  z-index: 1;
-  position: absolute;
-}
-
-.rlc-day-today.rlc-day-marked::after {
-  background-color: white;
 }
 
 .short_calendar {

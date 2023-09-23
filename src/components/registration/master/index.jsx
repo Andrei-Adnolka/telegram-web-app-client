@@ -1,9 +1,10 @@
 import { useState, useCallback, useEffect } from "react";
 import t from "timestamp-utils";
+import cn from "classnames";
 
 import CalendarIU from "../../calendar";
 import FormIU from "../../form";
-import { getDateWithoutTime, getDayLabel } from "../../calendar/utils";
+import { getDayLabel } from "../../calendar/utils";
 
 import { useTelegram, useChangeMainButtonName } from "../../../hooks";
 
@@ -37,9 +38,10 @@ const ServiceList = ({ servicesList, setService }) => (
   </div>
 );
 
-const MasterUI = ({ name, servicesList, place, phone }) => {
-  const today = getDateWithoutTime(new Date().getTime());
-  const [date, setDate] = useState(today);
+const MasterUI = (props) => {
+  const { name, servicesList, place, phone, workingDays, workingHours } = props;
+  const [date, setDate] = useState(workingDays[0]);
+  const [time, setTime] = useState(0);
   const [service, setService] = useState("");
   const [formData, setFormData] = useState("");
 
@@ -58,6 +60,7 @@ const MasterUI = ({ name, servicesList, place, phone }) => {
       formData,
       queryId,
       userInfo,
+      time,
     };
     // fetch("http://localhost:8000/web-data ", {
     //   method: "POST",
@@ -103,7 +106,7 @@ const MasterUI = ({ name, servicesList, place, phone }) => {
         <div>{place}</div>
       </div>
       {service ? (
-        <div className="master_service" onClick={onSendData}>
+        <div className="master_service">
           <div className="master_services__title">
             Услуга<span onClick={onRemoved}>Изменить</span>
           </div>
@@ -112,7 +115,26 @@ const MasterUI = ({ name, servicesList, place, phone }) => {
       ) : (
         <ServiceList servicesList={servicesList} setService={setService} />
       )}
-      <CalendarIU onClickDate={setDate} activeDay={date} />
+      <CalendarIU
+        onClickDate={setDate}
+        activeDay={date}
+        workingDays={workingDays}
+      />
+      <div className="working_hours">
+        {workingHours?.[date]?.map?.((hours) => {
+          const [hour, min] = hours.split(":");
+          const onClick = () => {
+            setTime(hours);
+          };
+          return (
+            <div
+              key={hours}
+              onClick={onClick}
+              className={cn({ ["hour_active"]: hours === time })}
+            >{`${hour}:${min}`}</div>
+          );
+        })}
+      </div>
       <FormIU onSetData={onSetFormData} />
     </div>
   );

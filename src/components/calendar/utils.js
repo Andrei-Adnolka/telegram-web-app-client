@@ -62,7 +62,7 @@ const getParsedDays = (day, month) => {
   return null;
 };
 
-export const getShortDays = (today, lastMonthDay, activeDay) => {
+export const getShortDays = (today, lastMonthDay, activeDay, markedDays) => {
   const [year, month, dayNumber] = t.decompose(activeDay);
 
   if (today === lastMonthDay) {
@@ -72,9 +72,13 @@ export const getShortDays = (today, lastMonthDay, activeDay) => {
     return [getParsedDays(activeDay, month)];
   }
 
-  let days = getDays(today, lastMonthDay).slice(0, 7);
+  let days = getDays(today, lastMonthDay);
   if (!days.includes(activeDay)) {
-    days = getDays(activeDay, lastMonthDay).slice(0, 7);
+    days = getDays(activeDay, lastMonthDay);
   }
-  return days.map((d) => getParsedDays(d, month)).filter((el) => el);
+  return days
+    .filter((d) => markedDays.includes(d))
+    .slice(0, 7)
+    .map((d) => getParsedDays(d, month))
+    .filter((el) => el);
 };
