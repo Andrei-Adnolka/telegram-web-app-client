@@ -20,6 +20,7 @@ export const useTelegram = () => {
     onToggleButton,
     telegram,
     user: telegram?.initDataUnsafe?.user,
+    userInfo: telegram?.initDataUnsafe,
     queryId: telegram?.initDataUnsafe?.query_id,
   };
 };

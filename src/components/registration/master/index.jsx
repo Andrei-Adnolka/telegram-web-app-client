@@ -43,7 +43,7 @@ const MasterUI = ({ name, servicesList, place, phone }) => {
   const [service, setService] = useState("");
   const [formData, setFormData] = useState("");
 
-  const { telegram, queryId } = useTelegram();
+  const { telegram, queryId, userInfo } = useTelegram();
 
   useChangeMainButtonName("Записаться");
 
@@ -57,6 +57,7 @@ const MasterUI = ({ name, servicesList, place, phone }) => {
       service,
       formData,
       queryId,
+      userInfo,
     };
     // fetch("http://localhost:8000/web-data ", {
     //   method: "POST",
