@@ -85,7 +85,7 @@ $disabled-color: #b4b2b2;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 2px solid $active-block-color;
+  border-bottom: double $active-block-color;
   height: 40px;
   font-weight: 700;
 }
