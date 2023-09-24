@@ -1,33 +1,24 @@
 @import '../../styles/common.scss';
 
-.my_orders__list {
+.tabs {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin: 0 8px;
-  .master {
-    @include blockUI;
-    .master__header {
-      display: flex;
-      margin-bottom: 8px;
-      > img {
-        width: 48px;
-        height: 48px;
-        margin-right: 8px;
-        border-radius: 16px;
-      }
-      > div {
-        display: flex;
-        flex-direction: column;
-      }
+  justify-content: center;
+  margin: 16px 0px;
+  .tab {
+    padding: 8px 16px;
+    background-color: $background-color;
+    &:first-of-type {
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
     }
-    .master_info {
-      display: flex;
-      flex-direction: column;
-      font-weight: 700;
-      border-bottom: double $active-block-color;
-      padding-bottom: 8px;
-      margin-bottom: 8px;
+    &:last-of-type {
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
+      border-left: 0;
+    }
+    &_active {
+      background-color: $active-block-color;
+      color: white;
     }
   }
 }

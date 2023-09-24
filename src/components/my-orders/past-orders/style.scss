@@ -1,0 +1,52 @@
+@import '../../../styles/common.scss';
+
+.my_orders__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0 8px;
+  & > .master {
+    @include blockUI;
+    & > .master__header {
+      display: flex;
+      margin-bottom: 8px;
+      > img {
+        width: 46px;
+        height: 46px;
+        margin-right: 8px;
+        border-radius: 20px;
+      }
+      > div {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+    & > .master_info {
+      display: flex;
+      flex-direction: column;
+      font-weight: 700;
+      border-bottom: double $active-block-color;
+      padding-bottom: 12px;
+      margin-bottom: 12px;
+    }
+    & > .master_actions {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 16px;
+      & > * {
+        justify-content: center;
+      }
+    }
+  }
+}
+
+.image_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background-color: $active-block-color;
+  margin: 0 auto 4px;
+}

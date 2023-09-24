@@ -148,6 +148,9 @@ $disabled-color: #b4b2b2;
     &__active {
       color: white;
       background-color: $active-block-color;
+      > svg > path {
+        stroke: white;
+      }
       &:hover {
         background-color: $active-block-color;
       }

@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, memo } from "react";
 import t from "timestamp-utils";
 import cn from "classnames";
 
@@ -121,6 +121,11 @@ const MasterUI = (props) => {
     [setFormData]
   );
 
+  const handelSetData = (d) => {
+    setDate(d);
+    setTime(0);
+  };
+
   return (
     <div className="master_wrapper">
       <div className="master_info">
@@ -145,7 +150,7 @@ const MasterUI = (props) => {
         />
       )}
       <CalendarIU
-        onClickDate={setDate}
+        onClickDate={handelSetData}
         activeDay={date}
         workingDays={workingDays}
       />
@@ -169,4 +174,4 @@ const MasterUI = (props) => {
   );
 };
 
-export default MasterUI;
+export default memo(MasterUI);

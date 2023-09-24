@@ -72,6 +72,7 @@
   > div {
     @include blockUI;
     font-size: 14px;
+    width: 56px;
     &.hour_active {
       background-color: $active-block-color;
       color: white;
