@@ -71,7 +71,7 @@ const MasterUI = (props) => {
 
   useChangeMainButtonName("Записаться");
 
-  const onSendData = useCallback(() => {
+  const onSendData = useCallback(async () => {
     const data = {
       masterName: name,
       masterPhone: phone,
@@ -84,15 +84,16 @@ const MasterUI = (props) => {
       userInfo,
       time,
     };
-    // fetch("http://localhost:8000/web-data ", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-type": "application/json",
-    //   },
-    //   body: JSON.stringify(data),
-    // });
-    // // TODO: remove after deploy bot
-    telegram.sendData(JSON.stringify(data));
+
+    await fetch("http://localhost:8000/web-data", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    // TODO: remove after deploy bot
+    // telegram.sendData(JSON.stringify(data));
   }, [date, service, formData, queryId, name]);
 
   useEffect(() => {
@@ -170,6 +171,7 @@ const MasterUI = (props) => {
         })}
       </div>
       <FormIU onSetData={onSetFormData} />
+      <button onClick={onSendData}>Send data</button>
     </div>
   );
 };

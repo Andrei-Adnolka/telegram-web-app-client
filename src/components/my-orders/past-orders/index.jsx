@@ -94,7 +94,7 @@ const MyPastOrdersUI = ({ lang }) => {
               </span>
             </div>
             <div className="master_actions">
-              <a className="master__phone" href={`tel:${phone}`}>
+              <a className="master__phone" href={`https://t.me/${phone}`}>
                 {getAction("/phone.svg", contact)}
               </a>
               <Link
