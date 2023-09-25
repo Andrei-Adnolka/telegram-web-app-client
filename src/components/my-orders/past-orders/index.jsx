@@ -20,7 +20,7 @@ const MOCK_CONFIG = [
     id: "1",
     masterId: "222",
     photo: "/user-avatar.jpg",
-    phone: "+375441111111",
+    phone: "+375447152278",
     specialty: "Барбер",
     day: "Пт",
     date: { label: "Дата", value: "21 августа" },
@@ -34,7 +34,7 @@ const MOCK_CONFIG = [
     id: "2",
     masterId: "333",
     photo: "/user-avatar.jpg",
-    phone: "+375442222222",
+    phone: "+375445852219",
     specialty: "Барбер",
     day: "Пт",
     date: { label: "Дата", value: "21 августа" },
@@ -94,7 +94,7 @@ const MyPastOrdersUI = ({ lang }) => {
               </span>
             </div>
             <div className="master_actions">
-              <a className="master__phone" href={`https://t.me/+375445852219`}>
+              <a className="master__phone" href={`https://t.me/${phone}`}>
                 {getAction("/phone.svg", contact)}
               </a>
               <Link
