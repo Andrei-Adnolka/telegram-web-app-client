@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useTelegram } from "../../../hooks";
 
 import "./style.scss";
 
@@ -57,6 +58,8 @@ const getAction = (src, text) => (
 
 const MyPastOrdersUI = ({ lang }) => {
   const { contact, repeat, remove } = l10n[lang];
+  const { telegram } = useTelegram();
+
   return (
     <div className="my_orders__list">
       {MOCK_CONFIG.map((order) => {
@@ -74,6 +77,9 @@ const MyPastOrdersUI = ({ lang }) => {
           day,
           phone,
         } = order;
+        const onClick = () => {
+          telegram?.openLink?.(`tel:${phone}`);
+        };
         return (
           <div key={id} className="master">
             <div className="master__header">
@@ -94,7 +100,11 @@ const MyPastOrdersUI = ({ lang }) => {
               </span>
             </div>
             <div className="master_actions">
-              <a className="master__phone" href={`tel:${phone}`}>
+              <a
+                className="master__phone"
+                href={`tel:${phone}`}
+                onClick={onClick}
+              >
                 {getAction("/phone.svg", contact)}
               </a>
               <Link
