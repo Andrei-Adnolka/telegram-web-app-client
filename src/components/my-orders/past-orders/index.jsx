@@ -5,12 +5,12 @@ import "./style.scss";
 
 const l10n = {
   ru: {
-    contact: "Позвонить",
+    contact: "Написать",
     repeat: "Повторить",
     remove: "Удалить",
   },
   eng: {
-    contact: "Call",
+    contact: "Send message",
     repeat: "Repeat",
     remove: "Remove",
   },
@@ -21,7 +21,7 @@ const MOCK_CONFIG = [
     id: "1",
     masterId: "222",
     photo: "/user-avatar.jpg",
-    phone: "375441111111",
+    phone: "+375441111111",
     specialty: "Барбер",
     day: "Пт",
     date: { label: "Дата", value: "21 августа" },
@@ -35,7 +35,7 @@ const MOCK_CONFIG = [
     id: "2",
     masterId: "333",
     photo: "/user-avatar.jpg",
-    phone: "375442222222",
+    phone: "+375442222222",
     specialty: "Барбер",
     day: "Пт",
     date: { label: "Дата", value: "21 августа" },
@@ -77,9 +77,6 @@ const MyPastOrdersUI = ({ lang }) => {
           day,
           phone,
         } = order;
-        const onClick = () => {
-          telegram?.openLink?.(`tel:${phone}`);
-        };
         return (
           <div key={id} className="master">
             <div className="master__header">
@@ -100,12 +97,8 @@ const MyPastOrdersUI = ({ lang }) => {
               </span>
             </div>
             <div className="master_actions">
-              <a
-                className="master__phone"
-                href={`tel:${phone}`}
-                onClick={onClick}
-              >
-                {getAction("/phone.svg", contact)}
+              <a className="master__phone" href={`https://t.me/${phone}`}>
+                {getAction("/telegram.svg", contact)}
               </a>
               <Link
                 key={id}

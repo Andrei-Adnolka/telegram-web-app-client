@@ -7,13 +7,17 @@ import { RegistrationUI, MyOrdersUI } from "./components";
 import "./App.css";
 
 const App = () => {
-  const [lang, setLang] = useState("ru");
+  const [lang, setLang] = useState("eng");
 
   const { telegram } = useTelegram();
 
   useEffect(() => {
     telegram.ready();
   }, [telegram]);
+
+  const onClick = () => {
+    setLang(lang === "ru" ? "eng" : "ru");
+  };
 
   return (
     <div className="App">
@@ -24,6 +28,7 @@ const App = () => {
         />
         <Route path="my_orders" element={<MyOrdersUI lang={lang} />} />
       </Routes>
+      <div onClick={onClick}>язык</div>
     </div>
   );
 };

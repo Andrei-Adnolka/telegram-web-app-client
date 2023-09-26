@@ -2,7 +2,13 @@ import { useParams, Link } from "react-router-dom";
 
 import "./style.scss";
 
-const MasterListUI = ({ setMaster, masterList }) => {
+const l10n = {
+  ru: { button: "Записаться" },
+  eng: { button: "Book now" },
+};
+
+const MasterListUI = ({ setMaster, masterList, lang }) => {
+  const { button } = l10n[lang];
   return (
     <div className="masters_wrapper">
       <div className="masters_list">
@@ -29,7 +35,7 @@ const MasterListUI = ({ setMaster, masterList }) => {
                 {phone}
               </a> */}
               <span className="master__place">{place}</span>
-              <div className="master__button">Записаться</div>
+              <div className="master__button">{button}</div>
             </Link>
           );
         })}

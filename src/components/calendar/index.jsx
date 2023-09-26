@@ -18,6 +18,11 @@ import "./styles.scss";
 
 t.setTimezone(TIMEZONE);
 
+const l10n = {
+  ru: { title: "Дата и время" },
+  eng: { title: "Date and time" },
+};
+
 const CalendarIcon = () => (
   <svg
     width="28px"
@@ -37,8 +42,9 @@ const CalendarIcon = () => (
 const CalendarUI = (props) => {
   const [state, setState] = useState(initMonth());
   const [isOpen, setIsOpen] = useState(false);
-  const { onClickDate, activeDay, workingDays = null } = props;
+  const { onClickDate, activeDay, workingDays = null, lang } = props;
   const { month, year, firstDayToDisplay, lastMonthDay, firstMonthDay } = state;
+  const { title } = l10n[lang];
 
   const onIsOpenChange = useCallback(() => {
     setIsOpen((prev) => !prev);
@@ -88,7 +94,7 @@ const CalendarUI = (props) => {
 
   return (
     <div className="calendar_wrapper">
-      <div className="title">Дата и время</div>
+      <div className="title">{title}</div>
       <div className="short_calendar">
         <div
           className={cn("short_calendar__button", {

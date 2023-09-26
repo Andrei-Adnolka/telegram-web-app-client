@@ -154,6 +154,7 @@ const MasterUI = (props) => {
         onClickDate={handelSetData}
         activeDay={date}
         workingDays={workingDays}
+        lang={lang}
       />
       <div className="working_hours">
         {workingHours?.[date]?.map?.((hours) => {
@@ -170,8 +171,7 @@ const MasterUI = (props) => {
           );
         })}
       </div>
-      <FormIU onSetData={onSetFormData} />
-      <button onClick={onSendData}>Send data</button>
+      <FormIU onSetData={onSetFormData} lang={lang} />
     </div>
   );
 };
